@@ -6,17 +6,15 @@ import PromptPreview from "./components/PromptPreview";
 import { promptOptions } from "./data/promptOptions";
 
 const App = () => {
-  const [subject, setSubject] = useState("");
+  const [subject, setSubject] = useState<string>("");
 
   const [selectedCamera, setSelectedCamera] = useState<string[]>([]);
   const [selectedLighting, setSelectedLighting] = useState<string[]>([]);
   const [selectedQuality, setSelectedQuality] = useState<string[]>([]);
-  const [selectedArchitecture, setSelectedArchitecture] = useState<string[]>(
-    []
-  );
+  const [selectedArchitecture, setSelectedArchitecture] = useState<string[]>([]);
   const [selectedEffects, setSelectedEffects] = useState<string[]>([]);
 
-  const [copied, setCopied] = useState(false);
+  const [copied, setCopied] = useState<boolean>(false);
 
   const toggleSelection = (
     value: string,
@@ -127,7 +125,7 @@ const App = () => {
               title="Lens & Camera"
               options={promptOptions.camera}
               selected={selectedCamera}
-              toggleOption={(value) =>
+              toggleOption={(value: string) =>
                 toggleSelection(
                   value,
                   selectedCamera,
@@ -140,7 +138,7 @@ const App = () => {
               title="Lighting Style"
               options={promptOptions.lighting}
               selected={selectedLighting}
-              toggleOption={(value) =>
+              toggleOption={(value: string) =>
                 toggleSelection(
                   value,
                   selectedLighting,
@@ -153,7 +151,7 @@ const App = () => {
               title="Resolution & Quality"
               options={promptOptions.quality}
               selected={selectedQuality}
-              toggleOption={(value) =>
+              toggleOption={(value: string) =>
                 toggleSelection(
                   value,
                   selectedQuality,
@@ -166,7 +164,7 @@ const App = () => {
               title="Architecture / Design"
               options={promptOptions.architecture}
               selected={selectedArchitecture}
-              toggleOption={(value) =>
+              toggleOption={(value: string) =>
                 toggleSelection(
                   value,
                   selectedArchitecture,
@@ -179,7 +177,7 @@ const App = () => {
               title="Additional Visual Effects"
               options={promptOptions.effects}
               selected={selectedEffects}
-              toggleOption={(value) =>
+              toggleOption={(value: string) =>
                 toggleSelection(
                   value,
                   selectedEffects,
