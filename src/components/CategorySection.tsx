@@ -1,49 +1,36 @@
-export const promptOptions = {
-  camera: [
-    "85mm f/1.2",
-    "50mm f/1.8",
-    "24mm f/1.4",
-    "35mm f/1.4",
-    "Macro Lens",
-    "Drone View",
-    "GoPro style"
-  ],
+import OptionChip from "./OptionChip";
 
-  lighting: [
-    "Chiaroscuro",
-    "Golden Hour",
-    "Film Noir",
-    "Cinematic Lighting",
-    "Natural Light",
-    "Cyberpunk Neon",
-    "Studio Lighting"
-  ],
+interface CategorySectionProps {
+  title: string;
+  options: string[];
+  selected: string[];
+  toggleOption: (value: string) => void;
+}
 
-  quality: [
-    "8k",
-    "4k",
-    "Ultra-realistic",
-    "Masterpiece",
-    "Highly Detailed",
-    "Raw Photo",
-    "Photorealistic",
-    "Unreal Engine 5"
-  ],
+const CategorySection = ({
+  title,
+  options,
+  selected,
+  toggleOption
+}: CategorySectionProps) => {
+  return (
+    <div className="bg-surface border border-border rounded-2xl p-5">
+      <h2 className="text-lg font-semibold mb-4 text-white">
+        {title}
+      </h2>
 
-  architecture: [
-    "Japandi",
-    "Minimalist",
-    "Brutalist",
-    "Mid-Century Modern",
-    "Bohemian",
-    "Industrial"
-  ],
-
-  effects: [
-    "Volumetric Fog",
-    "Depth of Field (DoF)",
-    "Motion Blur",
-    "Lens Flare",
-    "Film Grain"
-  ]
+      <div className="flex flex-wrap gap-3">
+        {options.map((option: string) => (
+          <OptionChip
+            key={option}
+            label={option}
+            active={selected.includes(option)}
+            onClick={() => toggleOption(option)}
+          />
+        ))}
+      </div>
+    </div>
+  );
 };
+
+export default CategorySection;
